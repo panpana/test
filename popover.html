@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>popover</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <style>
     .wrapper {
         position: relative;
@@ -51,9 +52,18 @@
         </div>
     </div>
     <script>
-    clickMe.addEventListener('click', function(e) {
-        popover.style.display = 'block'
+    var isclick = true
+    clickMe.addEventListener('click', function() {
+        if (isclick) {
+            popover.style.display = 'block'
+            isclick = !isclick
+        } else {
+            popover.style.display = 'none'
+            isclick = !isclick
+        }
+
     })
+
     wrapper.addEventListener('click', function(e) {
         e.stopPropagation()
     })
