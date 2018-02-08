@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>popover</title>
+    <style>
+    .wrapper {
+        position: relative;
+        display: inline-block;
+    }
+
+    .popover {
+        border: 1px solid red;
+        position: absolute;
+        left: 100%;
+        top: 0;
+        white-space: nowrap;
+        padding: 10px;
+        margin-left: 8px;
+        background: white;
+        display: none;
+    }
+
+    .popover::before {
+        position: absolute;
+        right: 100%;
+        top: 5px;
+        border: 5px solid transparent;
+        border-right-color: red;
+        content: '';
+    }
+
+    .popover::after {
+        position: absolute;
+        right: 100%;
+        top: 5px;
+        border: 5px solid transparent;
+        border-right-color: white;
+        content: '';
+        margin-right: -1px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper" class="wrapper">
+        <button id="clickMe">点我</button>
+        <div id="popover" class="popover">
+            <input type="checkbox">我是一个浮层
+        </div>
+    </div>
+    <script>
+    clickMe.addEventListener('click', function(e) {
+        popover.style.display = 'block'
+    })
+    wrapper.addEventListener('click', function(e) {
+        e.stopPropagation()
+    })
+
+    document.addEventListener('click', function() {
+        popover.style.display = 'none'
+    })
+    </script>
+</body>
+
+</html>
